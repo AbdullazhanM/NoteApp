@@ -9,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.example.noteapp.databinding.FragmentAddBinding
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class AddFragment : Fragment() {
@@ -29,8 +31,12 @@ class AddFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val data = Date();
+        val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        binding.edData.setText(sdf.format(Date()))
+
         if (arguments != null) {
-            binding.save.text= "edit"
+            binding.save.text = "edit"
             val mode = arguments?.getSerializable("edit") as NoteModel
             binding.edTitle.setText(mode.title)
 
