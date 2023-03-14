@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
-import com.joma.notes.databinding.FragmentAddBinding
+import com.example.noteapp.databinding.FragmentAddBinding
 
 
 class AddFragment : Fragment() {
@@ -30,16 +30,16 @@ class AddFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         if (arguments != null) {
-            binding.save.text = "edit"
+            binding.save.text= "edit"
             val mode = arguments?.getSerializable("edit") as NoteModel
-            binding.title.setText(mode.title)
+            binding.edTitle.setText(mode.title)
 
         }
         binding.save.setOnClickListener {
             val noteModel = NoteModel(
-                binding.title.text.toString(),
-                binding.desc.text.toString(),
-                binding.date.text.toString(),
+                binding.edTitle.text.toString(),
+                binding.edDes.text.toString(),
+                binding.edData.text.toString(),
                 imageUri
             )
             (requireActivity() as MainActivity).list.add(noteModel)
@@ -48,7 +48,7 @@ class AddFragment : Fragment() {
         }
 
 
-        binding.image.setOnClickListener {
+        binding.imgAdd.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK)
             intent.type = "image/*"
             startActivityForResult(intent, 1)
@@ -61,8 +61,8 @@ class AddFragment : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK) {
             if (requestCode == 1) {
-                Glide.with(requireContext()).load(data?.data).into(binding.image)
-                binding.image.setPadding(0, 0, 0, 0)
+                Glide.with(requireContext()).load(data?.data).into(binding.imgAdd)
+                binding.imgAdd.setPadding(0, 0, 0, 0)
                 imageUri = "${data?.data}"
             }
         }

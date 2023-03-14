@@ -1,34 +1,36 @@
 package com.example.noteapp
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
-import com.joma.notes.databinding.ItemNoteBinding
+import com.example.noteapp.databinding.ItemNoteBinding
 
-class NoteAdapter(val iOnItem: IOnItem): RecyclerView.Adapter<NoteAdapter.ViewHolder>() {
+class NoteAdapter(val iOnItem: NoteFragment) : RecyclerView.Adapter<NoteAdapter.ViewHolder>() {
 
     private var list: MutableList<NoteModel> = ArrayList()
 
-    fun setList(list: MutableList<NoteModel>){
+    fun setList(list: MutableList<NoteModel>) {
         this.list = list
         notifyDataSetChanged()
     }
 
-    fun getItem(pos:Int): NoteModel{
+    fun getItem(pos: Int): NoteModel {
         return list[pos]
     }
 
-    fun remove(pos: Int){
+    fun remove(pos: Int) {
         list.removeAt(pos)
         notifyItemRemoved(pos)
     }
 
-    inner class ViewHolder(private val binding: ItemNoteBinding): RecyclerView.ViewHolder(binding.root){
+    inner class ViewHolder(private val binding: ItemNoteBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(pos: Int) {
-            itemView.context.getString(R.string.delete)
+            "Delete"
             binding.title.text = list[pos].title
             Glide.with(itemView)
                 .load(list[pos].imageUri)
@@ -59,7 +61,7 @@ class NoteAdapter(val iOnItem: IOnItem): RecyclerView.Adapter<NoteAdapter.ViewHo
         holder.bind(position)
     }
 
-    interface IOnItem{
+    interface IOnItem {
         fun delete(pos: Int)
         fun edit(pos: Int)
         fun share(pos: Int)

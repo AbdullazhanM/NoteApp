@@ -6,9 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.noteapp.AddFragment
-import com.example.noteapp.NoteAdapter
-import com.example.noteapp.R
+import com.example.noteapp.databinding.FragmentNoteBinding
 
 
 class NoteFragment : Fragment() {
@@ -39,9 +37,9 @@ class NoteFragment : Fragment() {
         adapter.setList((requireActivity() as MainActivity).list)
     }
 
-    override fun delete(pos: Int) {
+    fun delete(pos: Int) {
         val alert = AlertDialog.Builder(requireContext())
-        alert.setTitle(R.string.delete)
+        alert.setTitle("Delete")
         alert.setMessage("Are you sure to delete")
         alert.setNegativeButton("Cancel", null)
         alert.setPositiveButton("Delete"){_, _->
@@ -50,7 +48,7 @@ class NoteFragment : Fragment() {
         alert.show()
     }
 
-    override fun edit(pos: Int) {
+    fun edit(pos: Int) {
         val bundle = Bundle()
         bundle.putSerializable("edit", adapter.getItem(pos))
         val fragment = AddFragment()
@@ -62,7 +60,7 @@ class NoteFragment : Fragment() {
             .commit()
     }
 
-    override fun share(pos: Int) {
+    fun share(pos: Int) {
 
     }
 }
