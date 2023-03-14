@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#C5C5C5"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.EditFragment">
+
+    <ImageView
+        android:src="@color/white"
+        android:id="@+id/img_edit"
+        android:layout_width="311dp"
+        android:layout_height="311dp"
+        android:layout_marginTop="42dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/ed_title2"
+        android:layout_width="310dp"
+        android:layout_height="44dp"
+        android:layout_margin="12dp"
+        android:background="@drawable/editext"
+        android:hint="title2"
+        android:padding="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_edit" />
+
+    <EditText
+        android:id="@+id/ed_des2"
+        android:layout_width="310dp"
+        android:layout_height="44dp"
+        android:layout_margin="12dp"
+        android:background="@drawable/editext"
+        android:hint="Description"
+        android:padding="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ed_title2" />
+
+    <EditText
+        android:id="@+id/ed_data"
+        android:layout_width="310dp"
+        android:layout_height="44dp"
+        android:layout_margin="12dp"
+        android:background="@drawable/editext"
+        android:hint="data"
+        android:padding="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ed_des2" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_edit"
+        android:layout_width="310dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@color/yellow"
+        android:text="Edit"
+        android:textColor="@color/black"
+        app:cornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ed_data" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
