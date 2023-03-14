@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/noteFragment"
-        android:name="com.example.noteapp.fragment.NoteFragment"
+        android:name="com.example.noteapp.NoteFragment"
         android:label="fragment_note"
         tools:layout="@layout/fragment_note" />
     <fragment
         android:id="@+id/editFragment"
-        android:name="com.example.noteapp.fragment.EditFragment"
+        android:name="com.example.noteapp.EditFragment"
         android:label="fragment_edit"
         tools:layout="@layout/fragment_edit" />
     <fragment
         android:id="@+id/addFragment"
-        android:name="com.example.noteapp.fragment.AddFragment"
+        android:name="com.example.noteapp.AddFragment"
         android:label="fragment_add"
         tools:layout="@layout/fragment_add" />
 </navigation>
