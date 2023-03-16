@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import com.example.noteapp.databinding.FragmentNoteBinding
 
 
@@ -14,6 +16,7 @@ class NoteFragment : Fragment() {
     private var _binding: FragmentNoteBinding? = null
     private val binding get() = _binding!!
     lateinit var adapter: NoteAdapter
+    lateinit var navController: NavController
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,6 +28,12 @@ class NoteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val navHostFragment =
+            requireActivity().
+                supportFragmentManager.
+                findFragmentById(R.id.main_container) as NavHostFragment
+        navController = navHostFragment.navController
+
         adapter = NoteAdapter(this)
         binding.recycler.adapter = adapter
         binding.add.setOnClickListener {
@@ -53,11 +62,7 @@ class NoteFragment : Fragment() {
         bundle.putSerializable("edit", adapter.getItem(pos))
         val fragment = AddFragment()
         fragment.arguments = bundle
-        requireActivity()
-            .supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.main_container, fragment)
-            .commit()
+        navController.navigate(R.id.addFragment, bundle)
     }
 
     fun share(pos: Int) {

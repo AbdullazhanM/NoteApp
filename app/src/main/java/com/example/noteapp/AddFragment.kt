@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import com.bumptech.glide.Glide
 import com.example.noteapp.databinding.FragmentAddBinding
 import java.text.SimpleDateFormat
@@ -18,6 +20,7 @@ class AddFragment : Fragment() {
     private var _binding: FragmentAddBinding? = null
     private val binding get() = _binding!!
     var imageUri: String? = null
+    lateinit var navController: NavController
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,6 +33,11 @@ class AddFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val navHostFragment =
+            requireActivity().
+            supportFragmentManager.
+            findFragmentById(R.id.main_container) as NavHostFragment
+        navController = navHostFragment.navController
 
         val data = Date();
         val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
@@ -49,8 +57,7 @@ class AddFragment : Fragment() {
                 imageUri
             )
             (requireActivity() as MainActivity).list.add(noteModel)
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.main_container, NoteFragment()).commit()
+            navController.navigateUp()
         }
 
 

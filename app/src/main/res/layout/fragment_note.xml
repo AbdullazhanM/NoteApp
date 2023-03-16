@@ -10,6 +10,7 @@
     <SearchView
         android:background="@drawable/editext"
         android:id="@+id/search_view"
+        android:imeOptions="actionSearch"
         android:layout_width="310dp"
         android:layout_height="44dp"
         android:layout_margin="10dp"
